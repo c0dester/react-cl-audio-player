@@ -1,5 +1,7 @@
 # react-cl-audio-player
 
+## Repo is forked from [cezarlz](https://github.com/cezarlz)
+
 A simple audio player with ReactJS and CSS3.
 
 Inspiration: [Thanks Rovane Durso](https://dribbble.com/shots/998479-Music)
