@@ -119,6 +119,10 @@ Works perfectly in Chrome, Firefox and Safari. No tested in IE.
 
 Version 2.0 was rewritten. Be careful.
 
+## Fork changes:
+
+* List of available songs with play button
+
 ## License
 
 MIT License.

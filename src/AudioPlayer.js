@@ -14,6 +14,7 @@ class AudioPlayer extends PureComponent {
     onPause: PropTypes.func,
     onPrevious: PropTypes.func,
     onNext: PropTypes.func,
+    onCustomSongChoice: PropTypes.func,
   };
 
   static defaultProps = {
@@ -24,6 +25,7 @@ class AudioPlayer extends PureComponent {
     onPause: () => {},
     onPrevious: () => {},
     onNext: () => {},
+    onCustomSongChoice: () => {},
   };
 
   constructor(props) {
@@ -161,6 +163,20 @@ class AudioPlayer extends PureComponent {
     });
   };
 
+  goTo = (nextSongIndex) => {
+    const newActive = this.props.songs[nextSongIndex];
+
+    this.setState({
+      current: nextSongIndex,
+      active: newActive,
+      progress: 0,
+    });
+
+    this.audio.src = newActive.url;
+    this.play();
+    this.props.onCustomSongChoice();
+  };
+
   repeat = () =>
     this.setState({
       repeat: !this.state.repeat,
@@ -277,7 +293,19 @@ class AudioPlayer extends PureComponent {
             </button>
           </div>
         </div>
-
+        <div className="songs-list-wrapper">
+          <ul className="songs-list">
+            {
+              this.props.songs.map(({ artist: { name, song } }, i) => (
+                <li key={`${name}_${song}`} className="songs-list-item">
+                  <strong>{name}</strong>
+                  <span>{song}</span>
+                  <i className="fa fa-play songs-list-item-icon" onClick={() => this.goTo(i)} />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
     );
 	}

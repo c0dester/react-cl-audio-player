@@ -117,3 +117,31 @@
   color: #D9D9D9;
   background-color: #414141;
 }
+.songs-list {
+  list-style: decimal-leading-zero;
+  margin: 0;
+  padding: 20px 0 0 40px;
+  height: 100%;
+  overflow: auto;
+}
+.songs-list-wrapper {
+  height: 200px;
+  overflow: hidden;
+  padding: 0 0 20px 30px;
+}
+.songs-list-item {
+  margin-bottom: 7px;
+  position: relative;
+}
+.songs-list-item > * {
+  display: block;
+}
+.songs-list-item-icon {
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  cursor: pointer;
+}
+.songs-list-item-icon:active {
+  color: #838C92;
+}
