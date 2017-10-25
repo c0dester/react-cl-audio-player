@@ -122,6 +122,8 @@ Version 2.0 was rewritten. Be careful.
 ## Fork changes:
 
 * List of available songs with play button
+* Remove event listeners when component unmounts
+* Pause player on unmount to prevent music play when redirect using react router
 
 ## License
 
