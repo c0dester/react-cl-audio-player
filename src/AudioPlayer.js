@@ -64,7 +64,7 @@ class AudioPlayer extends PureComponent {
   }
 
   componentWillUnmount() {
-    delete this.audio;
+    this.audio.pause(); //TODO: remove all event listeners on unmount
   }
 
   shuffle = arr => arr.sort(() => Math.random() - 0.5);
