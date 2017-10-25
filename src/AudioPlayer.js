@@ -60,7 +60,7 @@ class AudioPlayer extends PureComponent {
 
   onAudioErrorOrEnd = e => {
     this.next();
-    props.onError(e);
+    this.props.onError(e);
   };
 
   onAudioTimeUpdate = e => {
