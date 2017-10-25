@@ -64,8 +64,21 @@ class AudioPlayer extends PureComponent {
   }
 
   componentWillUnmount() {
-    this.audio.pause(); //TODO: remove all event listeners on unmount
+    this.audio.removeEventListener('timeupdate', this.onAudioTimeUpdate);
+    this.audio.removeEventListener('ended', this.onAudioErrorOrEnd);
+    this.audio.removeEventListener('error', this.onAudioErrorOrEnd);
+    this.audio.pause();
   }
+
+  onAudioErrorOrEnd = e => {
+    this.next();
+    props.onError(e);
+  };
+
+  onAudioTimeUpdate = e => {
+    this.updateProgress();
+    this.props.onTimeUpdate(e);
+  };
 
   shuffle = arr => arr.sort(() => Math.random() - 0.5);
 
