@@ -46,21 +46,9 @@ class AudioPlayer extends PureComponent {
     this.audio.src = this.state.active.url;
     this.audio.autoplay = !!this.state.autoplay;
 
-    this.audio.addEventListener('timeupdate', e => {
-      this.updateProgress();
-
-      props.onTimeUpdate(e);
-    });
-    this.audio.addEventListener('ended', e => {
-      this.next();
-
-      props.onEnded(e);
-    });
-    this.audio.addEventListener('error', e => {
-      this.next();
-
-      props.onError(e);
-    });
+    this.audio.addEventListener('timeupdate', this.onAudioTimeUpdate);
+    this.audio.addEventListener('ended', this.onAudioErrorOrEnd);
+    this.audio.addEventListener('error', this.onAudioErrorOrEnd);
   }
 
   componentWillUnmount() {
