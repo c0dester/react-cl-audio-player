@@ -63,6 +63,10 @@ class AudioPlayer extends PureComponent {
     });
   }
 
+  componentWillUnmount() {
+    delete this.audio;
+  }
+
   shuffle = arr => arr.sort(() => Math.random() - 0.5);
 
   updateProgress = () => {
